@@ -1,9 +1,9 @@
 class Human {
 	
-	public final int DEFAULT_AGE = 0;
-	public final int DEFAULT_BALLS = 0;
-	public final String DEFAULT_NAME = "DEFAULT";
-	public final int MAX_MARKS_COUNT = 5;
+	public static final int DEFAULT_AGE = 0;
+	public static final int DEFAULT_BALLS = 0;
+	public static final String DEFAULT_NAME = "DEFAULT";
+	public static final int MAX_MARKS_COUNT = 5;
 	
 	private String name;
 	private int age;
@@ -65,7 +65,7 @@ class Human {
 		return this.marks;
 	}
 
-	public double getAverage() {
+	public double calcAverage() {
 		double sum = 0;
 		for (int i = 0; i < marks.length; i++) {
 			sum += marks[i];
@@ -80,5 +80,13 @@ class Human {
 			System.out.print(marks[i] + " ");
 		}
 		System.out.println();
+	}
+
+	public static void sort(Human[] humans) {
+		// TODO: реализовать
+	}
+
+	public static void showAll(Human[] humans) {
+		// TODO: релазиовать
 	}
 }
