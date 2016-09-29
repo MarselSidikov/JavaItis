@@ -25,6 +25,7 @@ class Program {
 		Human h2 = new Human();
 		h2.show();
 
+		// ссылочные типы!
 		h2 = h;
 		h2.setAge(100);
 		System.out.println("------ " + h.getAge());
