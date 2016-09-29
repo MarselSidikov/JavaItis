@@ -65,6 +65,14 @@ class Human {
 		return this.marks;
 	}
 
+	public double getAverage() {
+		double sum = 0;
+		for (int i = 0; i < marks.length; i++) {
+			sum += marks[i];
+		}
+
+		return sum / marks.length;
+	}
 	public void show() {
 		System.out.println( age + " " + 
 			name);

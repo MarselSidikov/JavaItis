@@ -35,5 +35,9 @@ class Program {
 
 		Human h4 = new Human(h3);
 		h4.show();
+
+		double average = h4.getAverage();
+
+		System.out.println(average);
 	}
 }
