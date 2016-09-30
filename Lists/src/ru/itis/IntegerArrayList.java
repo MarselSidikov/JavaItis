@@ -18,13 +18,23 @@ public class IntegerArrayList {
         this.data = new int[MAX_SIZE];
     }
 
+    public IntegerArrayList(int originalData[]) {
+        if (originalData.length <= MAX_SIZE) {
+            this.data = new int[MAX_SIZE];
+            this.count = originalData.length;
+            for (int i = 0; i < originalData.length; i++) {
+                this.data[i] = originalData[i];
+            }
+        } else throw new IllegalArgumentException();
+    }
+
     /**
      * Метод добавление элемента в конец списка
      * @param element элемент, который необходимо добавить
      * @throws IllegalArgumentException когда места нет
      */
     public void add(int element) {
-        if (this.count < MAX_SIZE -1) {
+        if (this.count < MAX_SIZE) {
             this.data[count] = element;
             count++;
         }
@@ -41,7 +51,7 @@ public class IntegerArrayList {
      * элемент уже есть
      */
     public void add(int element, int position) {
-        if (position < count && count < MAX_SIZE - 1) {
+        if (position < count && count < MAX_SIZE) {
             // TODO: реализовать сдвиг
         }
     }
@@ -78,6 +88,8 @@ public class IntegerArrayList {
      * @return значение элемента
      */
     public int get(int position) {
-        return -1;
+        if (position < this.count) {
+            return this.data[position];
+        } else throw new IllegalArgumentException();
     }
 }
