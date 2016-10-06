@@ -22,7 +22,6 @@ public class UsersDaoFileBasedImpl implements UsersDao {
         }
     }
 
-    @Override
     public List<User> getAll() {
         List<User> result = new ArrayList<>();
         try {
