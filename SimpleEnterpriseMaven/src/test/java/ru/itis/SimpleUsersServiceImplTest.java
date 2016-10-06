@@ -1,9 +1,10 @@
-package ru.itis.service;
+package ru.itis;
 
 import org.junit.Before;
 import org.junit.Test;
 import ru.itis.dao.UsersDao;
 import ru.itis.models.User;
+import ru.itis.service.SimpleUsersServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
