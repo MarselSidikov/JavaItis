@@ -1,5 +1,7 @@
 package ru.itis;
 
+import java.io.IOException;
+
 public class Main {
 
     public double div(int x, int y) {
@@ -27,5 +29,20 @@ public class Main {
 
         System.out.println("Hello");
 
+        SimpleReaderThrows reader = new SimpleReaderThrows();
+        try {
+            reader.readFromFile("C:/text.txt");
+        } catch (IOException e) {
+            System.out.println("Some error");
+        }
+
+        CheckedUncheckedExceptionsDemo demo = new CheckedUncheckedExceptionsDemo();
+
+        demo.calcPositive(4, 5);
+        try {
+            demo.calcNegative(10, 2);
+        } catch (IOException e) {
+            System.out.println("IO Exception");
+        }
     }
 }
