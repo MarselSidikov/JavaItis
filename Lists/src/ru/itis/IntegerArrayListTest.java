@@ -13,9 +13,9 @@ import static org.junit.Assert.assertEquals;
 // 3) actual - то, что получили, expected - то, что ожидаем
 public class IntegerArrayListTest {
 
-    private static int GET_CORRECT_POSITION = 2;
-    private static int GET_CORRECT_ANSWER_ON_CORRECT_POSITION = 3;
-    private static int INCORRECT_POSITION = 10;
+    private final static int GET_CORRECT_POSITION = 2;
+    private final static int GET_CORRECT_ANSWER_ON_CORRECT_POSITION = 3;
+    private final static int INCORRECT_POSITION = 10;
     // объектная переменная для тестируемого объекта
     IntegerArrayList testedList;
 
