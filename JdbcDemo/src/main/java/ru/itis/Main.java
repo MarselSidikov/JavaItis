@@ -3,6 +3,12 @@ package ru.itis;
 import java.sql.*;
 
 public class Main {
+
+    // language=SQL
+    private static final String SQL_INSERT_OWNER_QUERY =
+            "INSERT INTO owners(city, age, name) VALUES (?, ?, ?);";
+
+
     public static void main(String[] args) {
         Connection connection = null;
 
@@ -30,9 +36,7 @@ public class Main {
                     "owners(city, age, name) VALUES ('Moscow', 22, 'Marsel');");
             */
 
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO " +
-                            "owners(city, age, name) VALUES (?, ?, ?);");
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_OWNER_QUERY);
 
             preparedStatement.setString(1, "New York");
             preparedStatement.setInt(2, 30);
