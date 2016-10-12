@@ -1,9 +1,6 @@
 package ru.itis;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,6 +25,20 @@ public class Main {
                 System.out.println(result.getInt("car_id") +
                         " " + result.getString("name"));
             }
+            /*
+            statement.executeUpdate("INSERT INTO " +
+                    "owners(city, age, name) VALUES ('Moscow', 22, 'Marsel');");
+            */
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO " +
+                            "owners(city, age, name) VALUES (?, ?, ?);");
+
+            preparedStatement.setString(1, "New York");
+            preparedStatement.setInt(2, 30);
+            preparedStatement.setString(3, "John");
+
+            preparedStatement.execute();
 
         } catch (Exception e) {
             System.out.println(e);
