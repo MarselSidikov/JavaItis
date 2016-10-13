@@ -11,6 +11,9 @@ public class OwnersDaoJdbcImpl implements OwnersDao {
     // language=SQL
     private final String SQL_FIND_OWNER = "SELECT * FROM owners WHERE owner_id = ?;";
 
+    // language=SQL
+    private final String SQL_UPDATE_OWNER = "UPDATE owners SET name = ? WHERE owner_id = ?";
+
     public OwnersDaoJdbcImpl(Connection connection) {
         this.connection = connection;
     }
@@ -24,6 +27,20 @@ public class OwnersDaoJdbcImpl implements OwnersDao {
 
             result.next();
             return new Owner(result.getInt("owner_id"), result.getString("name"));
+
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+
+    }
+
+    public void update(Owner owner) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_OWNER);
+            preparedStatement.setString(1, owner.getName());
+            preparedStatement.setInt(2, owner.getId());
+
+            preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new IllegalStateException(e);

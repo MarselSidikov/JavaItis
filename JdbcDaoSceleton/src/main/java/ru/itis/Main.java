@@ -14,5 +14,14 @@ public class Main {
         Owner owner = ownerService.findUserById(3);
 
         System.out.println(owner);
+
+        Owner owner1 = new Owner(30, "AAAAAAAAAAAAA");
+
+        ownerService.updateOwner(owner1);
+
+        owner = ownerService.findUserById(3);
+
+        System.out.println(owner);
+
     }
 }

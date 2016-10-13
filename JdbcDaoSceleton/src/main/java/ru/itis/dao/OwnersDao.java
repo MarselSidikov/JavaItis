@@ -7,4 +7,5 @@ import java.sql.Connection;
 
 public interface OwnersDao {
     Owner find(int id);
+    void update(Owner owner);
 }

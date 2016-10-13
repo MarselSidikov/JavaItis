@@ -4,4 +4,5 @@ import ru.itis.models.Owner;
 
 public interface OwnerService {
     Owner findUserById(int id);
+    void updateOwner(Owner owner);
 }
