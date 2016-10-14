@@ -28,7 +28,7 @@ public class Main {
         }
 
         Season seasons[] = Season.values();
-        
+
         Season winter = Season.valueOf("WINTER");
 
         System.out.println(winter);
