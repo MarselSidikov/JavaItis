@@ -14,7 +14,6 @@ public class Producer extends Thread {
                     // снимаем блокировку
                     // поток, вызвал wait попадает в список ожидания
 
-
                     try {
                         System.out.println("Producer Waiting");
                         product.wait();
