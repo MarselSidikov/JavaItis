@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru-itis</groupId>
-    <artifactId>simple-servlet</artifactId>
+    <artifactId>simple-servlet-jsp</artifactId>
     <version>0.1</version>
     <packaging>war</packaging>
 
@@ -15,6 +15,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
