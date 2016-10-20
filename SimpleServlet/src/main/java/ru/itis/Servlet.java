@@ -15,12 +15,6 @@ public class Servlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        User user1 = new User("Marsel", 22);
-        User user2 = new User("Anna", 20);
-        User user3 = new User("Victor", 23);
-        List<User> users = Lists.newArrayList(user1, user2, user3);
-
-        request.setAttribute("myUsers", users);
         getServletContext().getRequestDispatcher("/hello.jsp").forward(request, response);
     }
 }

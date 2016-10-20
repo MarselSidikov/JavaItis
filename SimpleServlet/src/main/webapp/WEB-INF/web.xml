@@ -15,4 +15,11 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+    <jsp-config>
+        <taglib>
+            <taglib-uri></taglib-uri>
+            <taglib-location>/WEB-INF/HelloTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
 </web-app>
