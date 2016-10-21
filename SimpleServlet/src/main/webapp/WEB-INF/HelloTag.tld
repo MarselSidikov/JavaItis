@@ -11,7 +11,7 @@
 
     <tag>
         <name>hello</name>
-        <tag-class>ru.itis.HelloTag</tag-class>
+        <tag-class>ru.itis.tags.HelloTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>name</name>

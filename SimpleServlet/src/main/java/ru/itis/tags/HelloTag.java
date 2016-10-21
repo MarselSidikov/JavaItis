@@ -1,4 +1,4 @@
-package ru.itis;
+package ru.itis.tags;
 
 
 import javax.servlet.jsp.JspException;

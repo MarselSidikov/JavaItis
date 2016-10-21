@@ -1,14 +1,13 @@
-package ru.itis;
+package ru.itis.servlets;
 
 import com.google.common.collect.Lists;
+import ru.itis.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Servlet extends HttpServlet {
@@ -22,5 +21,12 @@ public class Servlet extends HttpServlet {
 
         request.setAttribute("myUsers", users);
         getServletContext().getRequestDispatcher("/hello.jsp").forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        System.out.println("FROM SERVLET " + name + " " + password);
     }
 }
