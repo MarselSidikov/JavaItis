@@ -1,8 +1,11 @@
 package ru.itis.servlets;
 
 import com.google.common.collect.Lists;
+import org.springframework.context.ApplicationContext;
+import ru.itis.UserService;
 import ru.itis.models.User;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,14 +15,20 @@ import java.util.List;
 
 public class Servlet extends HttpServlet {
 
+    private UserService userService;
+
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ApplicationContext context = (ApplicationContext)config.getServletContext().getAttribute("applicationContext");
+
+        this.userService = (UserService)context.getBean("user-service");
+    }
+
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        User user1 = new User("Marsel", 22);
-        User user2 = new User("Anna", 20);
-        User user3 = new User("Victor", 23);
-        List<User> users = Lists.newArrayList(user1, user2, user3);
 
-        request.setAttribute("myUsers", users);
+
+        request.setAttribute("myUsers", userService.getUsers());
         getServletContext().getRequestDispatcher("/hello.jsp").forward(request, response);
     }
 

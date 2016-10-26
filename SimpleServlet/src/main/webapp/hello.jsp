@@ -6,10 +6,12 @@
 </head>
 <body>
     <h1>
+        <!--
         <%
             response.addCookie(new Cookie("admin-name", "admin"));
             response.addCookie(new Cookie("admin-password", "admin"));
         %>
+        -->
         <c:forEach items="${requestScope.myUsers}" var="currentUser">
             <tr>
                 <td><c:out value="${currentUser.name}" /><td>
