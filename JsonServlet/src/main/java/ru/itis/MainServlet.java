@@ -2,6 +2,7 @@ package ru.itis;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainServlet extends HttpServlet {
+
+    private UserService userService;
+
+    @Override
+    public void init() {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(JavaConfiguration.class);
+
+        userService = context.getBean(UserService.class);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = new User();
@@ -35,10 +47,12 @@ public class MainServlet extends HttpServlet {
 
         resp.setContentType("application/json");
         resp.getWriter().write(stringResponse);
+        userService.showUser();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String stringRequest = req.getReader().readLine();
 
         ObjectMapper objectMapper = new ObjectMapper();
