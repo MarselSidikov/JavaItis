@@ -6,13 +6,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
+
 import org.springframework.web.bind.annotation.*;
 import ru.itis.models.User;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class MainController {
@@ -56,6 +53,10 @@ public class MainController {
         ResponseEntity<User> response = new ResponseEntity<User>(user, responseHeaders, HttpStatus.ACCEPTED);
 
         return response;
+    }
 
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public void addUser(@RequestBody User user) {
+        System.out.println(user.getName() + " " + user.getAge());
     }
 }
