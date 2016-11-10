@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 @EnableWebMvc
 @ComponentScan("ru.itis")
 public class WebConfig extends WebMvcConfigurerAdapter {
-    
+
     @Bean
     public ViewResolver configureViewResolver() {
         InternalResourceViewResolver viewResolve = new InternalResourceViewResolver();

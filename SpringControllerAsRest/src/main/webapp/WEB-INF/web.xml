@@ -13,12 +13,12 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>ru.itis.WebConfig</param-value>
+            <param-value>ru.itis.config.WebConfig</param-value>
         </init-param>
     </servlet>
 
-        <servlet-mapping>
-            <servlet-name>dispatcher</servlet-name>
-            <url-pattern>/</url-pattern>
-        </servlet-mapping>
-    </web-app>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
