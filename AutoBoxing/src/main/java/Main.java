@@ -18,6 +18,48 @@ public class Main {
         String s = "";
         System.out.println(s.hashCode());
 
+        String test = "Hello";
+
+        if (test.equals("Hello")) {
+            System.out.println("test passed 1");
+        }
+
+        String test2 = new String("Hello");
+
+        if (test2.equals("Hello")) {
+            System.out.println("test passed 2");
+        }
+
+        if (test == "Hello") {
+            System.out.println("test passed 3");
+        }
+
+        String test4 = "Hello";
+        String test42 = "Hello";
+
+        if (test4 == test42) {
+            System.out.println("test passed 4");
+        }
+
+        String test5 = new String("Hello");
+        String test52 = new String("Hello");
+
+        if (test5.equals(test52)) {
+            System.out.println("test passed 5");
+        }
+
+
+        if (test5 == test52) {
+            System.out.println("test passed 6");
+        } else System.out.println("test failed 6");
+
+        if (test4 == test52) {
+            System.out.println("test passed 7");
+        } else System.out.println("test failed 7");
+
+        if (test5.intern() == test52.intern()) {
+            System.out.println("test passed 8");
+        }
         /*
         // These two have the same value
         new String("test").equals("test"); // --> true

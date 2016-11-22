@@ -6,6 +6,8 @@ public class Main {
 
         thread.start();
         thread2.start();
-        MyThread3 thread3 = new MyThread3();
+       // ShowBye showByeTask = new ShowBye();
+
+        ShowBye showByeTask = ShowBye.runTask();
     }
 }
