@@ -25,25 +25,53 @@ public class MessagesController {
 
     @RequestMapping(value = "/messages", method = RequestMethod.GET)
     public List<MessageDto> getMessage() {
-        Callable<List<MessageDto>> taskGetUnreadMessages = () -> {
-                synchronized (service.getNewMessages()) {
-                    while (service.getNewMessages().isEmpty()) {
-                        service.getNewMessages().wait();
-                    }
+        /**
+         // Callable - это как Runnable, только
+         // возвращает результат выполнения
+         Callable<List<MessageDto>> taskGetUnreadMessages = () -> {
+         // прошу у сервиса список новых сообщений
+         // блокирую доступ к этому списку
+         synchronized (service.getNewMessages()) {
+         // пока список пустой
+         while (service.getNewMessages().isEmpty()) {
+         // мы ждем на этом списке
+         service.getNewMessages().wait();
+         }
+         // мы формируем ответ клиенту
+         List<MessageDto> result = new ArrayList<>(service.getNewMessages());
+         // список сообщений очистили
+         service.getNewMessages().clear();
+         // отправили ответ
+         return result;
+         }
+         };
 
-                    List<MessageDto> result = new ArrayList<>(service.getNewMessages());
-                    service.getNewMessages().clear();
-                    return result;
+         ExecutorService executor = Executors.newSingleThreadExecutor();
+         Future<List<MessageDto>> result = executor.submit(taskGetUnreadMessages);
+
+         try {
+         return result.get();
+         } catch (InterruptedException | ExecutionException e) {
+         throw new IllegalStateException(e);
+         }
+         **/
+
+        synchronized (service.getNewMessages()) {
+            // пока список пустой
+            while (service.getNewMessages().isEmpty()) {
+                // мы ждем на этом списке
+                try {
+                    service.getNewMessages().wait();
+                } catch (InterruptedException e) {
+                    throw new IllegalArgumentException();
                 }
-            };
-
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future<List<MessageDto>> result = executor.submit(taskGetUnreadMessages);
-
-        try {
-            return result.get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw new IllegalStateException(e);
+            }
+            // мы формируем ответ клиенту
+            List<MessageDto> result = new ArrayList<>(service.getNewMessages());
+            // список сообщений очистили
+            service.getNewMessages().clear();
+            // отправили ответ
+            return result;
         }
     }
 
