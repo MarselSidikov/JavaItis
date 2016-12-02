@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.itis.models.Child;
 
 public class HibernateConnector {
     private static HibernateConnector connector;
@@ -17,10 +18,14 @@ public class HibernateConnector {
         configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
         configuration.setProperty("hibernate.connection.username", "postgres");
         configuration.setProperty("hibernate.connection.password", "qwerty007");
-        configuration.setProperty("hibernate.show_sql", "false");
+        configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+
+        configuration.setProperty("hibernate.hbm2ddl.auto", "update");
+
         configuration.addResource("User.hbm.xml");
         configuration.addResource("Auto.hbm.xml");
+        configuration.addAnnotatedClass(Child.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }

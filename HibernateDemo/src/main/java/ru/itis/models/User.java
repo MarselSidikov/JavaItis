@@ -6,11 +6,13 @@ public class User {
     private Integer id;
     private String name;
     private List<Auto> autos;
+    private Integer age;
 
-    public User(Integer id, String name, List<Auto> autos) {
+    public User(Integer id, String name, List<Auto> autos, Integer age) {
         this.id = id;
         this.name = name;
         this.autos = autos;
+        this.age = age;
     }
 
     public User() {
@@ -38,5 +40,13 @@ public class User {
 
     public void setAutos(List<Auto> autos) {
         this.autos = autos;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

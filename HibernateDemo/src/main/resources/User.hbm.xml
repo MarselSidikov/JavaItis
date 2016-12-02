@@ -9,11 +9,12 @@
             <generator class="identity" />
         </id>
 
-        <property name="name"/>
+        <property name="name" column="name"/>
+        <property name="age" column="user_age"/>
 
-        <bag name="autos">
+        <bag name="autos" fetch="select">
             <key>
-                <column name="id"/>
+                <column name="member_id"/>
             </key>
             <one-to-many class="ru.itis.models.Auto"/>
         </bag>
